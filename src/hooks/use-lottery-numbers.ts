@@ -1,11 +1,12 @@
 import { useState } from "react";
 
 const useLotteryNumbers = (
+  minNumberPerGame = 6,
   maxNumbersPerGame = 20,
   maxNumberOfGames = 100,
   maxNumber = 60
 ) => {
-  const [numbersPerGame, setNumbersPerGame] = useState(6);
+  const [numbersPerGame, setNumbersPerGame] = useState(minNumberPerGame);
   const [numberOfGames, setNumberOfGames] = useState(1);
   const [generatedNumbers, setGeneratedNumbers] = useState<number[][]>([]);
   const [showTotalCoast, setShowTotalCoast] = useState(false);
@@ -57,6 +58,9 @@ const useLotteryNumbers = (
 
   const handleNumbersPerGame = (value: number) => {
     setShowTotalCoast(false);
+    if(value <= minNumberPerGame) {
+      return setNumbersPerGame(minNumberPerGame)
+    }
     setNumbersPerGame(value > maxNumbersPerGame ? maxNumbersPerGame : value);
   };
 
