@@ -77,7 +77,7 @@ export default function App() {
             <div className="mt-6">
               {showTotalCoast && (
                 <p className="text-sm font-semibold">
-                  {`Custo total: ${totalCost.toLocaleString("pt-BR", {
+                  {`Custo aproximado: ${totalCost.toLocaleString("pt-BR", {
                     style: "currency",
                     currency: "BRL",
                   })}`}
